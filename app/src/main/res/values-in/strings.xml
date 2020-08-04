@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Submission2GithubUser</string>
+    <string name="tab_followers">Pengikut</string>
+    <string name="tab_followings">Mengikut</string>
+    <string name="search">Cari</string>
+</resources>
