@@ -42,29 +42,6 @@ class MainViewModel : ViewModel(){
                         githubUser.id = item.getInt("id")
                         githubUser.url = item.getString("url")
                         githubUser.login = item.getString("login")
-                        userClient.get(githubUser.url, object: AsyncHttpResponseHandler(){
-                            override fun onSuccess(
-                                statusCode: Int,
-                                headers: Array<out Header>?,
-                                responseBody: ByteArray?
-                            ) {
-                                val userDetail = responseBody?.let { JSONObject(String(it)) }
-                                githubUser.followers = userDetail?.getInt("followers")
-                                githubUser.publicRepos = userDetail?.getInt("public_repos")
-                                githubUser.name = userDetail?.getString("name")
-                            }
-
-                            override fun onFailure(
-                                statusCode: Int,
-                                headers: Array<out Header>?,
-                                responseBody: ByteArray?,
-                                error: Throwable?
-                            ) {
-                                Log.d("Failed2ndAPI: ", statusCode.toString());
-                                Log.d("Error2ndAPI : ", error.toString());
-                            }
-
-                        })
                         listUsers.add(githubUser)
                     }
 

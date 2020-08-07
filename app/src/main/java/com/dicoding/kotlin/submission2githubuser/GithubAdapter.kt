@@ -26,11 +26,9 @@ class GithubAdapter : RecyclerView.Adapter<GithubAdapter.GithubViewHolder>(){
                     .load(githubUser.avatarURL)
                     .into(profile_image)
                 user_name.text = githubUser.login
-                user_desc.text = "${githubUser.followers} followers    ${githubUser.publicRepos} public repos"
 
             }
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GithubViewHolder {

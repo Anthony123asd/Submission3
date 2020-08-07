@@ -21,8 +21,7 @@ class MainActivity : AppCompatActivity() {
         GithubAdapter = GithubAdapter()
         GithubAdapter.notifyDataSetChanged()
 
-        search_results.layoutManager = LinearLayoutManager(this)
-        search_results.adapter = GithubAdapter
+
 
         mainViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(MainViewModel::class.java)
 
@@ -40,6 +39,9 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
+        search_results.layoutManager = LinearLayoutManager(this)
+        search_results.adapter = GithubAdapter
+
         GithubAdapter.setOnItemClickCallback(object : GithubAdapter.OnItemClickCallback{
             override fun onItemClicked(user: GithubUser) {
                 val toDetailIntent = Intent(this@MainActivity, UserDetailActivity::class.java)
@@ -47,6 +49,8 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+
+
     }
 
     private fun showLoading(state: Boolean) {
