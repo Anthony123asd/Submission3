@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var GithubAdapter: GithubAdapter
-    private lateinit var mainViewModel : MainViewModel
+    private lateinit var mainViewModel : MainViewModel2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        mainViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(MainViewModel::class.java)
+        mainViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(MainViewModel2::class.java)
 
         search_button.setOnClickListener(){
             val searchText = edit_search.text.toString()

@@ -10,25 +10,24 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class NetworkConfig {
     // set interceptor
-    fun getInterceptor() : OkHttpClient {
+    private fun getInterceptor() : OkHttpClient {
         val logging = HttpLoggingInterceptor()
         logging.level = HttpLoggingInterceptor.Level.BODY
-        val okHttpClient = OkHttpClient.Builder()
-            .addInterceptor(logging)
+        return OkHttpClient.Builder()
             .addInterceptor(object : Interceptor {
                 override fun intercept(chain: Interceptor.Chain): Response {
                     val newRequest = chain.request().newBuilder()
-                        .addHeader("Authorization","token 54173ba775f452d264a13dcba8c7842250f28443")
+                        .addHeader("Authorization","54173ba775f452d264a13dcba8c7842250f28443")
                         .addHeader("User-Agent","request")
                         .build()
                     return chain.proceed(newRequest)
                 }
             })
+            .addInterceptor(logging)
             .build()
-        return  okHttpClient
     }
 
-    fun getRetrofit(): Retrofit{
+    private fun getRetrofit(): Retrofit{
         return Retrofit.Builder()
             .baseUrl("https://api.github.com/")
             .client(getInterceptor())
@@ -36,5 +35,5 @@ class NetworkConfig {
             .build()
     }
 
-    fun getService() = getRetrofit().create(APIInterface::class.java)
+    fun getService(): APIInterface = getRetrofit().create(APIInterface::class.java)
 }

@@ -4,41 +4,40 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.dicoding.kotlin.submission2githubuser.data.GithubUsers
 import com.dicoding.kotlin.submission2githubuser.data.SearchUserResults
 import com.dicoding.kotlin.submission2githubuser.utils.NetworkConfig
+import com.google.gson.Gson
+import org.json.JSONArray
 import retrofit2.Call
 import retrofit2.Response
-import javax.security.auth.callback.Callback
+
 
 class MainViewModel2 : ViewModel(){
-    val listGithubUsers = MutableLiveData<ArrayList<GithubUser>>()
-    private lateinit var networkConfig: NetworkConfig
-
+    private val listGithubUsers = MutableLiveData<ArrayList<GithubUser>>()
 
     fun returnUserSearch(user: String) {
-
-        networkConfig.run {
-            /*getService().returnUserSearch(user).enqueue(object : Callback<List<GithubUsers>>,
-                retrofit2.Callback<List<GithubUsers>> {
-                override fun onFailure(call: Call<List<GithubUsers>>, t: Throwable) {
+        val searchResults : List<SearchUserResults>
+        NetworkConfig().getService().returnUserSearch(user, "followers").enqueue(object : retrofit2.Callback<SearchUserResults>{
+                override fun onFailure(call: Call<SearchUserResults>, t: Throwable) {
                     Log.d("OnFailure",t.toString())
                 }
 
                 override fun onResponse(
-                    call: Call<List<GithubUsers>>,
-                    response: Response<List<GithubUsers>>
+                    call: Call<SearchUserResults>,
+                    response: Response<SearchUserResults>
                 ) {
+                    var SearchUserResults = SearchUserResults()
                     val result = response.body()
                     Log.d("OnSuccess", result.toString())
 
+                    SearchUserResults.items = result?.items
+
+
+
                 }
-
-            })*/
-
-            getService().returnUserSearch(user).enqueue(object : Callback<List<SearchUserResults>>{})
-        }
+        })
     }
+
 
     fun getUsers(): LiveData<ArrayList<GithubUser>> {
         return listGithubUsers
