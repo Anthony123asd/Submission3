@@ -11,13 +11,13 @@ import cz.msebera.android.httpclient.Header
 import org.json.JSONObject
 import java.lang.Exception
 
-class MainViewModel : ViewModel(){
+class MainViewModel2 : ViewModel(){
     val listGithubUsers = MutableLiveData<ArrayList<GithubUser>>()
 
     fun returnUserSearch(user: String) {
         val listUsers = ArrayList<GithubUser>()
         val apiToken = "54173ba775f452d264a13dcba8c7842250f28443"
-        val searchURL = "https://api.github.com/search/users?q=$user&type=Users&sort=followers"
+        val searchURL = "https://api.github.com/search/users?q=$user&type=Users"
 
         val searchClient = AsyncHttpClient()
         searchClient.addHeader("Authorization", "token $apiToken")

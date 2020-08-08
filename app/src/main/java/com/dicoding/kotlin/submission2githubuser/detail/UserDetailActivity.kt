@@ -13,6 +13,7 @@ import kotlinx.android.synthetic.main.activity_user_detail.*
 import kotlinx.android.synthetic.main.activity_user_detail.progressBar
 
 class UserDetailActivity : AppCompatActivity() {
+    private lateinit var detailAdapter : DetailAdapter
     private lateinit var userDetailViewModel : UserDetailViewModel
     companion object{
         const val EXTRA_USER = "extra_user"
@@ -26,9 +27,12 @@ class UserDetailActivity : AppCompatActivity() {
 
         val user = intent.getParcelableExtra(EXTRA_USER) as GithubUser
 
+        detailAdapter = DetailAdapter()
+        detailAdapter.notifyDataSetChanged()
+
         userDetailViewModel.getUserDetail().observe(this, Observer { users->
             if (users != null) {
-                DetailAdapter.setData(users)
+                detailAdapter.setData(users)
                 showLoading(false)
             }
         })
