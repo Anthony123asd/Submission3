@@ -59,5 +59,16 @@ data class GithubUsers(
 	val nodeId: String? = null,
 
 	@field:SerializedName("organizations_url")
-	val organizationsUrl: String? = null
+	val organizationsUrl: String? = null,
+
+//tambahan dari detail
+	@field:SerializedName("public_repos")
+	var publicRepos: Int? = null,
+
+	@field:SerializedName("followers")
+	var followers: Int? = null,
+
+	@field:SerializedName("name")
+	var name: String? = null
 )
+

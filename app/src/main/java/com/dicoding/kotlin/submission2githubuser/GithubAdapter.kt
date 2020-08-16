@@ -5,28 +5,28 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.annotation.GlideModule
 import com.bumptech.glide.request.RequestOptions
+import com.dicoding.kotlin.submission2githubuser.data.GithubUsers
 import kotlinx.android.synthetic.main.item_list.view.*
 
 class GithubAdapter : RecyclerView.Adapter<GithubAdapter.GithubViewHolder>(){
-    private val mData = ArrayList<GithubUser>()
+    private val mData = ArrayList<GithubUsers?>()
     private lateinit var onItemClickCallback: OnItemClickCallback
 
-    fun setData(users: ArrayList<GithubUser>) {
+    fun setData(users: ArrayList<GithubUsers?>) {
         mData.clear()
         mData.addAll(users)
         notifyDataSetChanged()
     }
 
     inner class GithubViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(githubUser: GithubUser) {
+        fun bind(githubUser: GithubUsers?) {
             with(itemView){
                 Glide.with(itemView)
-                    .load(githubUser.avatarURL)
+                    .load(githubUser?.avatarUrl)
                     .into(profile_image)
-                user_name.text = githubUser.login
-
+                user_name.text = githubUser?.login
+                user_desc.text = "${githubUser?.followers} followers ${githubUser?.publicRepos} public repos"
             }
         }
     }

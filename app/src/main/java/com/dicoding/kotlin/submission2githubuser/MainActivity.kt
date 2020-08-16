@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,6 +14,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
     private lateinit var GithubAdapter: GithubAdapter
     private lateinit var mainViewModel : MainViewModel2
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +48,7 @@ class MainActivity : AppCompatActivity() {
             override fun onItemClicked(user: GithubUser) {
                 val toDetailIntent = Intent(this@MainActivity, UserDetailActivity::class.java)
                 toDetailIntent.putExtra(UserDetailActivity.EXTRA_USER, user)
+                startActivity(toDetailIntent)
             }
 
         })

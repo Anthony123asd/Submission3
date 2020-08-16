@@ -10,5 +10,5 @@ data class SearchUserResults(
     val incompleteResults: Boolean? = null,
 
     @field:SerializedName("items")
-    var items: List<GithubUsers?>? = null
+    var items: ArrayList<GithubUsers?>? = null
     )
