@@ -5,13 +5,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.dicoding.kotlin.submission2githubuser.data.GithubUsers
 import kotlinx.android.synthetic.main.item_list.view.*
 
 class GithubAdapter : RecyclerView.Adapter<GithubAdapter.GithubViewHolder>(){
     private val mData = ArrayList<GithubUsers?>()
-    private lateinit var onItemClickCallback: OnItemClickCallback
+    private var onItemClickCallback: OnItemClickCallback? = null
 
     fun setData(users: ArrayList<GithubUsers?>) {
         mData.clear()
@@ -27,6 +26,8 @@ class GithubAdapter : RecyclerView.Adapter<GithubAdapter.GithubViewHolder>(){
                     .into(profile_image)
                 user_name.text = githubUser?.login
                 user_desc.text = "${githubUser?.followers} followers ${githubUser?.publicRepos} public repos"
+
+                itemView.setOnClickListener{onItemClickCallback?.onItemClicked(githubUser)}
             }
         }
     }
@@ -44,11 +45,11 @@ class GithubAdapter : RecyclerView.Adapter<GithubAdapter.GithubViewHolder>(){
         holder.bind(mData[position])
     }
 
-    interface OnItemClickCallback {
-        fun onItemClicked(user: GithubUser)
-    }
-
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback
+    }
+
+    interface OnItemClickCallback {
+        fun onItemClicked(user: GithubUsers?)
     }
 }

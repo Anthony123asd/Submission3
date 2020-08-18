@@ -1,48 +1,57 @@
 package com.dicoding.kotlin.submission2githubuser.detail
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.dicoding.kotlin.submission2githubuser.GithubUser
+import androidx.lifecycle.viewModelScope
+import com.dicoding.kotlin.submission2githubuser.data.GithubUsers
+import com.dicoding.kotlin.submission2githubuser.utils.GithubUserRepo
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
 import cz.msebera.android.httpclient.Header
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.json.JSONObject
+import java.lang.Exception
 
 class UserDetailViewModel : ViewModel() {
-    val githubUserDetail = MutableLiveData<ArrayList<GithubUser>>()
+    private val githubUserDetail = MutableLiveData<GithubUsers>()
+    private val githubUserFollowers = MutableLiveData<ArrayList<GithubUsers?>>()
+    private val githubUserFollowings = MutableLiveData<ArrayList<GithubUsers?>>()
+    private val userRepo = GithubUserRepo()
 
-    fun returnUserDetail(githubUser: GithubUser){
-        val apiToken = "54173ba775f452d264a13dcba8c7842250f28443"
+    fun setData(user: GithubUsers) {
+        githubUserDetail.postValue(user)
+        viewModelScope.launch {
+            withContext(Dispatchers.IO){
+                try {
+                    val followers =
+                        async { userRepo.getService().returnFollowersList(user?.login.toString()) }
+                    val followings =
+                        async { userRepo.getService().returnFollowingList(user?.login.toString()) }
+                    githubUserFollowers.postValue(followers.await())
+                    githubUserFollowings.postValue(followings.await())
+                } catch (exception: Exception) {
+                    Log.e("TAG", exception.message)
+                }
 
-        val detailClient = AsyncHttpClient()
-        detailClient.addHeader("Authorization", "token $apiToken")
-        detailClient.addHeader("User-Agent","request")
-        detailClient.get(githubUser.url, object : AsyncHttpResponseHandler(){
-            override fun onSuccess(
-                statusCode: Int,
-                headers: Array<out Header>?,
-                responseBody: ByteArray?
-            ) {
-                val detailResult = responseBody?.let { JSONObject(String(it)) }
-                githubUser.name = detailResult?.getString("name")
-                githubUser.followers = detailResult?.getInt("followers")
 
             }
-
-            override fun onFailure(
-                statusCode: Int,
-                headers: Array<out Header>?,
-                responseBody: ByteArray?,
-                error: Throwable?
-            ) {
-                TODO("Not yet implemented")
-            }
-
-        })
+        }
     }
 
-    fun getUserDetail(): LiveData<ArrayList<GithubUser>> {
+    fun getUserDetail(): MutableLiveData<GithubUsers> {
         return githubUserDetail
+    }
+
+    fun requestUserFollowers(): LiveData<ArrayList<GithubUsers?>> {
+        return githubUserFollowers
+    }
+
+    fun requestUserFollowings(): LiveData<ArrayList<GithubUsers?>> {
+        return githubUserFollowings
     }
 }

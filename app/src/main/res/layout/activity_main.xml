@@ -15,39 +15,21 @@
         android:layout_centerVertical="true"
         android:visibility="gone"/>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/search_bar"
+    <TextView
+        android:id="@+id/welcome"
+        android:text="@string/welcome_message"
+        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="top"
-        android:padding="16dp"
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/edit_search"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/search_button"
-            app:layout_constraintEnd_toStartOf="@+id/search_button"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <Button
-            android:id="@+id/search_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:text="@string/search"/>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textSize="16dp"
+        android:visibility="visible"
+        />
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/search_results"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/item_list"
-        android:layout_below="@id/search_bar"/>
+        tools:listitem="@layout/item_list"/>
 </RelativeLayout>

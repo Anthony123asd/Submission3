@@ -4,4 +4,6 @@
     <string name="tab_followers">Pengikut</string>
     <string name="tab_followings">Mengikut</string>
     <string name="search">Cari</string>
+    <string name="search_hint">Masukkan kata untuk cari user</string>
+    <string name="welcome_message">Welcome, Start searching GitHub Users Online!</string>
 </resources>

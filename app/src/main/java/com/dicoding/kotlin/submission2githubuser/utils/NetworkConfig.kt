@@ -27,7 +27,7 @@ class NetworkConfig {
             .build()
     }
 
-    private fun getRetrofit(): Retrofit{
+    internal fun getRetrofit(): Retrofit{
         return Retrofit.Builder()
             .baseUrl("https://api.github.com/")
             .client(getInterceptor())
@@ -35,5 +35,5 @@ class NetworkConfig {
             .build()
     }
 
-    fun getService(): APIInterface = getRetrofit().create(APIInterface::class.java)
+
 }

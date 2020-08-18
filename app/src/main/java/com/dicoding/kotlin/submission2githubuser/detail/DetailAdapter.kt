@@ -5,50 +5,44 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.dicoding.kotlin.submission2githubuser.GithubUser
 import com.dicoding.kotlin.submission2githubuser.R
-import kotlinx.android.synthetic.main.item_list.view.*
+import com.dicoding.kotlin.submission2githubuser.data.GithubUsers
+import kotlinx.android.synthetic.main.follow_list.view.*
 
-class DetailAdapter : RecyclerView.Adapter<DetailAdapter.DetailViewHolder>(){
-    private val mData = ArrayList<GithubUser>()
-    private lateinit var onItemClickCallback: OnItemClickCallback
 
-    fun setData(users: ArrayList<GithubUser>) {
-        mData.clear()
-        mData.addAll(users)
+class DetailAdapter: RecyclerView.Adapter<DetailAdapter.DetailViewHolder>(){
+    private val followersData = ArrayList<GithubUsers?>()
+
+    fun setData(followers: ArrayList<GithubUsers?>) {
+        followersData.clear()
+        followersData.addAll(followers)
         notifyDataSetChanged()
     }
 
+
+
+
     inner class DetailViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(githubUser: GithubUser) {
+        fun bind(githubUser: GithubUsers?) {
             with(itemView){
                 Glide.with(itemView)
-                    .load(githubUser.avatarURL)
-                    .into(profile_image)
-                user_name.text = githubUser.login
-
+                    .load(githubUser?.avatarUrl)
+                    .into(follow_image)
+                follow_name.text = githubUser?.name
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DetailViewHolder {
-        val mView = LayoutInflater.from(parent.context).inflate(R.layout.item_list, parent, false)
+        val mView = LayoutInflater.from(parent.context).inflate(R.layout.follow_list, parent, false)
         return DetailViewHolder(mView)
     }
 
     override fun getItemCount(): Int {
-        return mData.size
+        return followersData.size
     }
 
     override fun onBindViewHolder(holder: DetailViewHolder, position: Int) {
-        holder.bind(mData[position])
-    }
-
-    interface OnItemClickCallback {
-        fun onItemClicked(user: GithubUser)
-    }
-
-    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
-        this.onItemClickCallback = onItemClickCallback
+        holder.bind(followersData[position])
     }
 }

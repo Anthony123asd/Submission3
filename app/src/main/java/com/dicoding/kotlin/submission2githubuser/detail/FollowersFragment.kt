@@ -11,10 +11,16 @@ import com.dicoding.kotlin.submission2githubuser.R
 class FollowersFragment : Fragment() {
 
     companion object {
-        fun newInstance() = FollowersFragment()
-    }
+        private val ARG_SECTION_NUMBER = "section_number"
 
-    private lateinit var viewModel: FollowersViewModel
+        fun newInstance(index: Int): FollowersFragment {
+            val fragment = FollowersFragment()
+            val bundle = Bundle()
+            bundle.putInt(ARG_SECTION_NUMBER, index)
+            fragment.arguments = bundle
+            return fragment
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -1,7 +1,10 @@
 package com.dicoding.kotlin.submission2githubuser.data
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class GithubUsers(
 
 	@field:SerializedName("gists_url")
@@ -68,7 +71,9 @@ data class GithubUsers(
 	@field:SerializedName("followers")
 	var followers: Int? = null,
 
+	@field:SerializedName("following")
+	var following: Int? = null,
+
 	@field:SerializedName("name")
 	var name: String? = null
-)
-
+) : Parcelable
