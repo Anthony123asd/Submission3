@@ -20,12 +20,12 @@
         android:id="@+id/follow_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
-        android:text="Nama Followers/Followings"
-        android:textSize="25sp"
+        android:text="@string/followers_name"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/follow_image"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/profile_image"
+        app:layout_constraintStart_toEndOf="@+id/follow_image"
         app:layout_constraintTop_toTopOf="@+id/follow_image" />
 </androidx.constraintlayout.widget.ConstraintLayout>

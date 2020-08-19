@@ -7,18 +7,7 @@
     tools:context=".detail.UserDetailActivity"
     android:background="@color/colorPrimary">
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:visibility="gone"/>
+
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/circleImageView"
@@ -37,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:gravity="center_horizontal"
-        android:text="User Detail Name"
+        android:text="@string/user_detail_name"
         android:textSize="24sp"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="@+id/circleImageView"
@@ -50,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:gravity="center_horizontal"
-        android:text="User Detail Login"
+        android:text="@string/user_detail_login"
         android:textSize="18sp"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="@+id/circleImageView"
@@ -63,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:gravity="center_horizontal"
-        android:text="User Detail Description"
+        android:text="@string/user_detail_description"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="@+id/circleImageView"
         app:layout_constraintStart_toStartOf="@+id/circleImageView"
@@ -74,7 +63,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:textColor="@android:color/white"
+        app:tabTextColor="@android:color/secondary_text_dark"
+        app:tabSelectedTextColor="@android:color/white"
         app:layout_constraintTop_toBottomOf="@+id/detail_description" />
 
     <androidx.viewpager.widget.ViewPager
@@ -83,6 +73,7 @@
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@+id/tabLayout"
         tools:layout_editor_absoluteX="16dp"
+        android:textColor="@android:color/white"
         android:background="@android:color/white"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

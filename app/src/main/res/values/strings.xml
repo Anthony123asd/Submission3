@@ -5,4 +5,8 @@
     <string name="search">Search</string>
     <string name="search_hint">Enter keyword to search user</string>
     <string name="welcome_message">Welcome, Start searching GitHub Users Online!</string>
+    <string name="followers_name">Followers Names</string>
+    <string name="user_detail_name">User Detail Name</string>
+    <string name="user_detail_login">User Detail Login</string>
+    <string name="user_detail_description">User Detail Description</string>
 </resources>

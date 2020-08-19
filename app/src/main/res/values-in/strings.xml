@@ -2,8 +2,12 @@
 <resources>
     <string name="app_name">Submission2GithubUser</string>
     <string name="tab_followers">Pengikut</string>
-    <string name="tab_followings">Mengikut</string>
+    <string name="tab_followings">Mengikuti</string>
     <string name="search">Cari</string>
     <string name="search_hint">Masukkan kata untuk cari user</string>
-    <string name="welcome_message">Welcome, Start searching GitHub Users Online!</string>
+    <string name="welcome_message">Selamat datang, Mulai mencari pengguna Github Online!</string>
+    <string name="followers_name">Nama Followers/Followings</string>
+    <string name="user_detail_name">Nama Detil User</string>
+    <string name="user_detail_login">Login Detil User</string>
+    <string name="user_detail_description">Deskripsi Detil User</string>
 </resources>

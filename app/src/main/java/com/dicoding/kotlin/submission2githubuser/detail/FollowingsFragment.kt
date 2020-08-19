@@ -1,26 +1,25 @@
 package com.dicoding.kotlin.submission2githubuser.detail
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
-import androidx.fragment.app.Fragment
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.kotlin.submission2githubuser.R
 import com.dicoding.kotlin.submission2githubuser.utils.GithubUserRepo
 import kotlinx.android.synthetic.main.followers_fragment.*
 
-class FollowersFragment : Fragment() {
+class FollowingsFragment : Fragment() {
     private lateinit var followersAdapter: FollowersAdapter
     private val userRepo = GithubUserRepo()
 
     companion object {
-        private const val USERNAME = "username"
+        private val USERNAME = "username"
 
-        fun newInstance(username: String?): FollowersFragment {
-            val fragment = FollowersFragment()
+        fun newInstance(username: String?): FollowingsFragment {
+            val fragment = FollowingsFragment()
             val bundle = Bundle()
             bundle.putString(USERNAME, username)
             fragment.arguments = bundle
@@ -46,8 +45,7 @@ class FollowersFragment : Fragment() {
             rv_followers.layoutManager = LinearLayoutManager(context)
             rv_followers.adapter = followersAdapter
 
-
-            val followers = userRepo.getService().returnFollowersList(username)
+            val followers = userRepo.getService().returnFollowingList(username)
             followersAdapter.setData(followers)
             showLoading(false)
         }

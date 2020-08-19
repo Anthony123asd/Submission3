@@ -10,7 +10,7 @@ import com.dicoding.kotlin.submission2githubuser.data.GithubUsers
 import kotlinx.android.synthetic.main.follow_list.view.*
 
 
-class DetailAdapter: RecyclerView.Adapter<DetailAdapter.DetailViewHolder>(){
+class FollowersAdapter: RecyclerView.Adapter<FollowersAdapter.FollowersViewHolder>(){
     private val followersData = ArrayList<GithubUsers?>()
 
     fun setData(followers: ArrayList<GithubUsers?>) {
@@ -22,27 +22,27 @@ class DetailAdapter: RecyclerView.Adapter<DetailAdapter.DetailViewHolder>(){
 
 
 
-    inner class DetailViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
+    class FollowersViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
         fun bind(githubUser: GithubUsers?) {
             with(itemView){
                 Glide.with(itemView)
                     .load(githubUser?.avatarUrl)
                     .into(follow_image)
-                follow_name.text = githubUser?.name
+                follow_name.text = githubUser?.login
             }
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DetailViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FollowersViewHolder {
         val mView = LayoutInflater.from(parent.context).inflate(R.layout.follow_list, parent, false)
-        return DetailViewHolder(mView)
+        return FollowersViewHolder(mView)
     }
 
     override fun getItemCount(): Int {
         return followersData.size
     }
 
-    override fun onBindViewHolder(holder: DetailViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: FollowersViewHolder, position: Int) {
         holder.bind(followersData[position])
     }
 }
