@@ -15,7 +15,7 @@ import java.io.IOException
 
 
 class MainViewModel : ViewModel(){
-    protected val listGithubUsers = MutableLiveData<ArrayList<GithubUsers?>>()
+    private val listGithubUsers = MutableLiveData<ArrayList<GithubUsers?>>()
     private val userRepo = GithubUserRepo()
 
 
@@ -44,8 +44,6 @@ class MainViewModel : ViewModel(){
                         else -> Log.d("UnknownError", "Unknown Error")
                     }
                 }
-
-
             }
 
         }

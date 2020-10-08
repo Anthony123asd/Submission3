@@ -20,7 +20,7 @@ data class GithubUsers(
 	val starredUrl: String? = null,
 
 	@field:SerializedName("login")
-	val login: String? = null,
+	var login: String? = null,
 
 	@field:SerializedName("followers_url")
 	val followersUrl: String? = null,
@@ -41,7 +41,7 @@ data class GithubUsers(
 	val receivedEventsUrl: String? = null,
 
 	@field:SerializedName("avatar_url")
-	val avatarUrl: String? = null,
+	var avatarUrl: String? = null,
 
 	@field:SerializedName("events_url")
 	val eventsUrl: String? = null,
@@ -53,7 +53,7 @@ data class GithubUsers(
 	val siteAdmin: Boolean? = null,
 
 	@field:SerializedName("id")
-	val id: Int? = null,
+	var id: Int? = null,
 
 	@field:SerializedName("gravatar_id")
 	val gravatarId: String? = null,

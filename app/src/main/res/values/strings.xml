@@ -9,4 +9,7 @@
     <string name="user_detail_name">User Detail Name</string>
     <string name="user_detail_login">User Detail Login</string>
     <string name="user_detail_description">User Detail Description</string>
+    <string name="empty_fav_users">You haven\'t add any user to your favorite list.</string>
+    <string name="favorite_users">Favorites</string>
+    <string name="settings">Settings</string>
 </resources>

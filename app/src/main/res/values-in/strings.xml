@@ -10,4 +10,7 @@
     <string name="user_detail_name">Nama Detil User</string>
     <string name="user_detail_login">Login Detil User</string>
     <string name="user_detail_description">Deskripsi Detil User</string>
+    <string name="empty_fav_users">Anda belum menambahkan user ke daftar favorit anda.</string>
+    <string name="favorite_users">Favorit</string>
+    <string name="settings">Pengaturan</string>
 </resources>

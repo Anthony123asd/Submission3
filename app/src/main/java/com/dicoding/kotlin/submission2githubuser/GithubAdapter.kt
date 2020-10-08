@@ -49,6 +49,10 @@ class GithubAdapter : RecyclerView.Adapter<GithubAdapter.GithubViewHolder>(){
         this.onItemClickCallback = onItemClickCallback
     }
 
+    fun clearData() {
+        mData.clear()
+    }
+
     interface OnItemClickCallback {
         fun onItemClicked(user: GithubUsers?)
     }

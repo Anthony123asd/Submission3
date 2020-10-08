@@ -16,7 +16,7 @@ class FollowingsFragment : Fragment() {
     private val userRepo = GithubUserRepo()
 
     companion object {
-        private val USERNAME = "username"
+        private const val USERNAME = "username"
 
         fun newInstance(username: String?): FollowingsFragment {
             val fragment = FollowingsFragment()
@@ -39,7 +39,7 @@ class FollowingsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         lifecycleScope.launchWhenCreated{
             showLoading(true)
-            val username = arguments?.getString(USERNAME, "username")
+            val username = arguments?.getString(USERNAME, USERNAME)
             followersAdapter = FollowersAdapter()
             followersAdapter.notifyDataSetChanged()
             rv_followers.layoutManager = LinearLayoutManager(context)

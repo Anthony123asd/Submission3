@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".favuser.FavoriteUserActivity">
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -16,8 +16,8 @@
         android:visibility="gone"/>
 
     <TextView
-        android:id="@+id/welcome"
-        android:text="@string/welcome_message"
+        android:id="@+id/empty"
+        android:text="@string/empty_fav_users"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:gravity="center"
@@ -26,10 +26,10 @@
         android:visibility="visible"
         />
 
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/search_results"
+        android:id="@+id/rv_favorite_users"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/item_list"/>
+
 </RelativeLayout>

@@ -1,6 +1,7 @@
 package com.dicoding.kotlin.submission2githubuser.utils
 
 
+import com.dicoding.kotlin.submission2githubuser.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
@@ -17,8 +18,8 @@ class NetworkConfig {
             .addInterceptor(object : Interceptor {
                 override fun intercept(chain: Interceptor.Chain): Response {
                     val newRequest = chain.request().newBuilder()
-                        .addHeader("Authorization","54173ba775f452d264a13dcba8c7842250f28443")
-                        .addHeader("User-Agent","request")
+                        .addHeader("Authorization", BuildConfig.GITHUB_TOKEN)
+                        .addHeader("User-Agent","Anthony123asd")
                         .build()
                     return chain.proceed(newRequest)
                 }
