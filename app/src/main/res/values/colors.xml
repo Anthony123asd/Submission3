@@ -2,6 +2,7 @@
 <resources>
     <color name="colorPrimary">#C624292E</color>
     <color name="colorPrimaryDark">#C624292E</color>
-    <color name="colorAccent">#CADDDB</color>
-    <color name="colorAccentSecondary">#FFCADDDB</color>
+    <color name="colorAccent">#FF4E8C</color>
+    <color name="colorAccentSecondary">#F38DB0</color>
+    <color name="splashScreenColor">#FFFFFF</color>
 </resources>

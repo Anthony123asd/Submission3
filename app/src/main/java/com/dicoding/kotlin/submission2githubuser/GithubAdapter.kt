@@ -18,6 +18,8 @@ class GithubAdapter : RecyclerView.Adapter<GithubAdapter.GithubViewHolder>(){
         notifyDataSetChanged()
     }
 
+    fun getData() = mData
+
     inner class GithubViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
         fun bind(githubUser: GithubUsers?) {
             with(itemView){

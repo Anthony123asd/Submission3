@@ -19,11 +19,11 @@ import com.dicoding.kotlin.submission2githubuser.db.UserFavoriteContract.UserFav
 import kotlinx.android.synthetic.main.activity_user_detail.*
 
 class UserDetailActivity : AppCompatActivity() {
-    var githubUserLogin : String? = null
+    private var githubUserLogin : String? = null
+    private var statusFavorite : Boolean = false
 
     companion object{
         const val EXTRA_USER = "extra_user"
-        var statusFavorite : Boolean = false
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,14 +48,12 @@ class UserDetailActivity : AppCompatActivity() {
 
         val cursor = contentResolver.query(uriWithId, null, null, null, null)
         if (cursor != null) {
-            statusFavorite = true
-            setStatusFavorite(statusFavorite)
+            if (cursor.moveToFirst()) {
+                statusFavorite = true
+            }
+            cursor.close()
         }
-        else {
-            statusFavorite = false
-            setStatusFavorite(statusFavorite)
-        }
-        cursor?.close()
+        setStatusFavorite(statusFavorite)
 
         status_favorite.setOnClickListener{
             val values = contentValuesOf(

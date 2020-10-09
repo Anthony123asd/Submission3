@@ -19,7 +19,26 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".favuser.FavoriteUserActivity"></activity>
+
+        <activity
+            android:name=".splashscreen.SplashScreenActivity"
+            android:theme="@style/SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name=".preferences.AlarmReceiver"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity
+            android:name=".preferences.SettingsActivity"
+            android:label="@string/title_activity_settings" />
+        <activity android:name=".favuser.FavoriteUserActivity" />
 
         <provider
             android:name=".provider.UserFavoriteProvider"
@@ -32,13 +51,8 @@
         <activity
             android:name=".detail.UserDetailActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".MainActivity" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>

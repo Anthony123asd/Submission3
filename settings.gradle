@@ -1,2 +1,3 @@
+include ':favusersonlyapp'
 include ':app'
 rootProject.name = "Submission2GithubUser"

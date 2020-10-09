@@ -3,11 +3,11 @@ package com.dicoding.kotlin.submission2githubuser
 import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.kotlin.submission2githubuser.data.GithubUsers
 import com.dicoding.kotlin.submission2githubuser.detail.UserDetailActivity
 import com.dicoding.kotlin.submission2githubuser.favuser.FavoriteUserActivity
+import com.dicoding.kotlin.submission2githubuser.preferences.SettingsActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -84,10 +85,11 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.favorite_users ->{
-                val i = Intent(this, FavoriteUserActivity::class.java)
-                startActivity(i)
+                startActivity(Intent(this, FavoriteUserActivity::class.java))
             }
-            R.id.settings -> null
+            R.id.settings -> {
+                startActivity(Intent(this, SettingsActivity::class.java))
+            }
         }
         return true
     }

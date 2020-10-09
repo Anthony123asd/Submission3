@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">FavUsersOnlyApp</string>
+    <string name="empty_fav_users">You haven\'t add any user to your favorite list.</string>
+</resources>
